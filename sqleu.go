@@ -2,8 +2,8 @@
 //
 //	Software Source Code License Agreement (BSD License)
 //
-//  Create on 2013-8-24
-//  Update on 2013-10-31
+//  Create on 2013-11-30
+//  Update on 2013-12-01
 //  Email  slowfei@foxmail.com
 //  Home   http://www.slowfei.com
 
