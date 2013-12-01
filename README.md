@@ -46,3 +46,10 @@ func (this *TableName) SetName(name string) {
  		-path="": out file path
 
 
+#### [LICENSE](https://github.com/slowfei/gosfcore/blob/master/LICENSE)
+
+Copyright 2013 slowfei And The Contributors All rights reserved.
+
+Software Source Code License Agreement (BSD License)
+
+###
