@@ -11,11 +11,13 @@
 package main
 
 import (
+	"bytes"
 	"database/sql"
 	"errors"
 	"flag"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"go/format"
 	"os"
 	"regexp"
 	"strings"
@@ -299,11 +301,27 @@ func main() {
 		return
 	}
 
-	tplErr := fileTmpl.Execute(newFile, fileOut)
+	sourceBuf := bytes.NewBuffer(nil)
+
+	tplErr := fileTmpl.Execute(sourceBuf, fileOut)
 	if nil != tplErr {
 		fmt.Println(tplErr)
 		return
 	}
+
+	formatBuf, fbErr := format.Source(sourceBuf.Bytes())
+	if nil != fbErr {
+		fmt.Println(fbErr)
+		return
+	}
+
+	_, wErr := newFile.Write(formatBuf)
+
+	if nil != wErr {
+		fmt.Println(wErr)
+		return
+	}
+
 	fmt.Println("success.")
 	fmt.Println("path: ", newFile.Name())
 
